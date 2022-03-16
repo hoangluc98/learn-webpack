@@ -1,0 +1,13 @@
+$color-chocolate: chocolate;
+$font-size: 20px;
+
+.hello-button {
+    color: $color-chocolate;
+    padding: 8px 12px;
+    font-size: $font-size;
+}
+
+.hello-text {
+    color: $color-chocolate;
+    font-size: $font-size;
+}

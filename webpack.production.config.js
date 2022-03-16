@@ -1,15 +1,15 @@
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
+    filename: 'bundle.[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
   },
-  mode: 'none',
+  mode: 'production',
   module: {
     rules: [
       {
@@ -38,10 +38,15 @@ module.exports = {
     ]
   },
   plugins: [
-    // new HtmlWebpackPlugin({ template: './index.html' }),
-    new TerserPlugin(),
+    new HtmlWebpackPlugin({
+      title: "Hello World",
+      meta: {
+        description: "Hoang Luc"
+      }
+    }),
     new MiniCssExtractPlugin({
-      filename: 'styles.css'
-    })
+      filename: 'styles.[contenthash].css'
+    }),
+    new CleanWebpackPlugin()
   ],
 };
